@@ -1,684 +1,1167 @@
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="ja">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <script src="https://www.w3schools.com/lib/w3.js"></script>
-  <script type="text/javascript" async 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-  
-  <title>mayo2sake</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
+        </script>
+
+    <title>mayo2sake</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <style>
-  
-html {
-  box-sizing: border-box;
-  -ms-overflow-style: scrollbar;
-}
+    html {
+        box-sizing: border-box;
+        -ms-overflow-style: scrollbar;
+    }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 
-.container {
-  width: 96%;
-  padding-right: 0px;
-  padding-left: 0px;
-  padding-bottom: 40px;
-  margin-right: auto;
-  margin-left: auto;
-  background: #fff;
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
+    .container {
+        width: 96%;
+        padding-right: 0px;
+        padding-left: 0px;
+        padding-bottom: 40px;
+        margin-right: auto;
+        margin-left: auto;
+        background: #fff;
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
 
-@media (min-width: 576px) {
-  .container {
-    max-width: 560px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-}
+    @media (min-width: 576px) {
+        .container {
+            max-width: 560px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 740px;
-  }
-}
+    @media (min-width: 768px) {
+        .container {
+            max-width: 740px;
+        }
+    }
 
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
+    @media (min-width: 992px) {
+        .container {
+            max-width: 960px;
+        }
+    }
 
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-@charset "UTF-8";
-/* ==========================================
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1140px;
+        }
+    }
+
+    @charset "UTF-8";
+    /* ==========================================
    Template: matome（https://do.gt-gt.org/）
    Copyright: 2020 do.
    利用規約を遵守の上お使いください。二次配布・販売を禁じます。
    ========================================== */
-/* ==========================================
+    /* ==========================================
   リセットCSS
   基本的には触らないでください
   ========================================== */
-@import url("https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap");
-input[type="submit"] {
-  -webkit-appearance: none;
-  border-radius: 0;
-}
+    @import url("https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap");
 
-ol,
-ul {
-  list-style: none;
-}
+    input[type="submit"] {
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-img,
-p {
-  margin: 0;
-  padding: 0;
-}
+    ol,
+    ul {
+        list-style: none;
+    }
 
-p {
-  line-height: 1.6em;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    img,
+    p {
+        margin: 0;
+        padding: 0;
+    }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: bold;
-}
+    p {
+        line-height: 1.6em;
+    }
 
-/* ==========================================
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-weight: bold;
+    }
+
+    /* ==========================================
   以下、デザインを決める記述です。
   ※印で検索することで設定箇所へジャンプします。
    ========================================== */
-body {
-  background-size: auto auto;
-  background-color: #f8f8f8;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(255, 255, 255, 0.5) 14px, rgba(255, 255, 255, 0.5) 27px);
-  /* ↑上記3行が背景のストライプの記述です。
+    body {
+        background-size: auto auto;
+        background-color: #f8f8f8;
+        background-image: repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(255, 255, 255, 0.5) 14px, rgba(255, 255, 255, 0.5) 27px);
+        /* ↑上記3行が背景のストライプの記述です。
       お好みの色などに変更してください。※ */
-  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
-  padding: 0;
-  margin: 0;
-  color: #333333;
-  font-size: 16px;
-  line-height: 1.6;
-}
+        font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+        padding: 0;
+        margin: 0;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.6;
+    }
 
-a {
-  text-decoration: none;
-  color: #da2b5c;
-  /* ↑リンクの色　一括置換すると見出し色も一緒に変わります ※ */
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+    a {
+        text-decoration: none;
+        color: #da2b5c;
+        /* ↑リンクの色　一括置換すると見出し色も一緒に変わります ※ */
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
 
-a img {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+    a img {
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
 
-a:hover {
-  color: lightpink;
-  /* ↑リンクをホバーしたときの色 ※ */
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+    a:hover {
+        color: lightpink;
+        /* ↑リンクをホバーしたときの色 ※ */
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
 
-a:hover img {
-  opacity: 0.7;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+    a:hover img {
+        opacity: 0.7;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
 
-dl,
-ol,
-p,
-ul {
-  margin: 10px auto 20px;
-  padding: 0;
-}
+    dl,
+    ol,
+    p,
+    ul {
+        margin: 10px auto 20px;
+        padding: 0;
+    }
 
-@media screen and (max-width: 767px) {
-  dl,
-  ol,
-  p,
-  ul {
-    margin: 15px auto;
-  }
-}
+    @media screen and (max-width: 767px) {
 
-h1 {
-  color: #da2b5c;
-  /* ↑見出し色　リンク色と同じになります ※ */
-  font-family: "Kosugi Maru", sans-serif;
-}
+        dl,
+        ol,
+        p,
+        ul {
+            margin: 15px auto;
+        }
+    }
 
-h4 {
-  padding-left: 10px;
-  margin: 20px 0 10px;
-  font-size: 120%;
-}
+    h1 {
+        color: #da2b5c;
+        /* ↑見出し色　リンク色と同じになります ※ */
+        font-family: "Kosugi Maru", sans-serif;
+    }
 
-.center {
-  text-align: center;
-}
+    h4 {
+        padding-left: 10px;
+        margin: 20px 0 10px;
+        font-size: 120%;
+    }
 
-.header {
-  background-color: #db85b6;
-  background-image: url(https://drive.google.com/uc?id=1MX_vuAs8bmZB3_rlDsWqaRElFLaL41o1);
-  /* ↑ヘッダー画像 ※ */
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 300px;
-  position: relative;
-  text-align: center;
-  margin-bottom: 80px;
-}
+    .center {
+        text-align: center;
+    }
 
-.header img.icon {
-  display: block;
-  margin: auto;
-  height: 150px;
-  width: 150px;
-  background: #fff;
-  border-radius: 50%;
-  border: solid 6px #ffffff;
-  position: absolute;
-  bottom: -75px;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
+    .header {
+        background-color: #db85b6;
+        background-image: url(https://drive.google.com/uc?id=1MX_vuAs8bmZB3_rlDsWqaRElFLaL41o1);
+        /* ↑ヘッダー画像 ※ */
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 300px;
+        position: relative;
+        text-align: center;
+        margin-bottom: 80px;
+    }
 
-@media screen and (max-width: 767px) {
-  .header {
-    height: 200px;
-  }
-  .header img.icon {
-    height: 100px;
-    width: 100px;
-    border: solid 4px #ffffff;
-    bottom: -50px;
-  }
-}
+    .header img.icon {
+        display: block;
+        margin: auto;
+        height: 150px;
+        width: 150px;
+        background: #fff;
+        border-radius: 50%;
+        border: solid 6px #ffffff;
+        position: absolute;
+        bottom: -75px;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
 
-dl.memo dt {
-  width: 100%;
-  font-weight: bold;
-  color: #da2b5c;
-  padding: 0.5em 0;
-}
+    @media screen and (max-width: 767px) {
+        .header {
+            height: 200px;
+        }
 
-dl.memo dd {
-  border-left: 1px dotted #d0d0d0;
-  margin: 0 0 0 1em;
-  padding: 0 0 1em 1em;
-}
+        .header img.icon {
+            height: 100px;
+            width: 100px;
+            border: solid 4px #ffffff;
+            bottom: -50px;
+        }
+    }
 
-section {
-  width: 95%;
-  max-width: 800px;
-  margin: 60px auto;
-}
+    dl.memo dt {
+        width: 100%;
+        font-weight: bold;
+        color: #da2b5c;
+        padding: 0.5em 0;
+    }
 
-.two-column {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-}
+    dl.memo dd {
+        border-left: 1px dotted #d0d0d0;
+        margin: 0 0 0 1em;
+        padding: 0 0 1em 1em;
+    }
 
-.two-column .column {
-  width: 48%;
-}
+    section {
+        width: 95%;
+        max-width: 800px;
+        margin: 60px auto;
+    }
 
-@media screen and (max-width: 767px) {
-  .two-column {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
+    .two-column {
+        display: -webkit-box;
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+
+    .two-column .column {
+        width: 48%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .two-column {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
             flex-direction: column;
-  }
-  .two-column .column {
-    width: 100%;
-  }
-}
+        }
 
-h2 {
-  font-size: 20px;
-  margin: 1em auto;
-  color: #da2b5c;
-  width: 100%;
-}
+        .two-column .column {
+            width: 100%;
+        }
+    }
 
-section > h2 {
-  text-align: center;
-  font-size: 24px;
-}
+    h2 {
+        font-size: 20px;
+        margin: 1em auto;
+        color: #da2b5c;
+        width: 100%;
+    }
 
-h3 {
-  margin: 1em auto;
-}
+    section>h2 {
+        text-align: center;
+        font-size: 24px;
+    }
 
-.update {
-  font-size: 80%;
-  color: #bcbcbc;
-  text-align: center;
-}
+    h3 {
+        margin: 1em auto;
+    }
 
-.box {
-  background: #ffe8eb;
-  /* ↑色付きボックスの背景色 ※ */
-  padding: 10px 15px;
-  border-radius: 5px;
-}
+    .update {
+        font-size: 80%;
+        color: #bcbcbc;
+        text-align: center;
+    }
 
-.cs {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-          justify-content: flex-start;
-}
+    .box {
+        background: #ffe8eb;
+        /* ↑色付きボックスの背景色 ※ */
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
 
-.cs li {
-  width: 24%;
-  padding: 0;
-  margin: 0 0 20px 0;
-}
+    .cs {
+        display: -webkit-box;
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+    }
 
-.cs li:not(:nth-of-type(4n-3)) {
-  margin-left: calc(4% / 3);
-}
+    .cs li {
+        width: 24%;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
 
-.cs li a {
-  width: 100%;
-  background: #e6e6e6;
-  display: block;
-}
+    .cs li:not(:nth-of-type(4n-3)) {
+        margin-left: calc(4% / 3);
+    }
 
-.cs li a:hover {
-  background: #ffffff;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+    .cs li a {
+        width: 100%;
+        background: #e6e6e6;
+        display: block;
+    }
 
-.cs li a img {
-  width: 100%;
-  height: 180px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
+    .cs li a:hover {
+        background: #ffffff;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
 
-.cs li a .text {
-  padding: 5px;
-}
+    .cs li a img {
+        width: 100%;
+        height: 180px;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
 
-.cs li a .text p {
-  font-size: 80%;
-  color: #333333;
-  text-align: center;
-}
+    .cs li a .text {
+        padding: 5px;
+    }
 
-.cs li a .text p.name {
-  font-size: 100%;
-  color: #da2b5c;
-  text-align: center;
-  font-weight: bold;
-  margin: 0 auto 0.5em;
-}
+    .cs li a .text p {
+        font-size: 80%;
+        color: #333333;
+        text-align: center;
+    }
 
-@media screen and (max-width: 767px) {
-  .cs li {
-    width: 49%;
-  }
-  .cs li li a img {
-    height: 240px;
-  }
-  .cs li:not(:nth-of-type(4n-3)) {
-    margin-left: 0;
-  }
-  .cs li:nth-of-type(odd) {
-    margin-right: 2%;
-  }
-}
+    .cs li a .text p.name {
+        font-size: 100%;
+        color: #da2b5c;
+        text-align: center;
+        font-weight: bold;
+        margin: 0 auto 0.5em;
+    }
 
-@media screen and (max-width: 575px) {
-  .cs li {
-    width: 90%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 260px;
-  }
-  .cs li:nth-of-type(odd) {
-    margin-right: auto;
-  }
-  .cs li:not(:nth-of-type(4n-3)) {
-    margin-left: auto;
-  }
-}
+    @media screen and (max-width: 767px) {
+        .cs li {
+            width: 49%;
+        }
 
-ul.sns-list {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1em auto;
-  -webkit-box-pack: center;
-          justify-content: center;
-  max-width: 600px;
-}
+        .cs li li a img {
+            height: 240px;
+        }
 
-ul.sns-list li {
-  margin-bottom: 1em;
-}
+        .cs li:not(:nth-of-type(4n-3)) {
+            margin-left: 0;
+        }
 
-ul.sns-list li a {
-  font-size: 14px;
-  border: 2px solid #65676d;
-  color: #65676d;
-  padding: 5px 8px;
-  border-radius: 20px;
-}
+        .cs li:nth-of-type(odd) {
+            margin-right: 2%;
+        }
+    }
 
-ul.sns-list li a:hover {
-  background: #65676d;
-  color: #ffffff;
-}
+    @media screen and (max-width: 575px) {
+        .cs li {
+            width: 90%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 260px;
+        }
 
-ul.sns-list li a.twitter:hover {
-  background: #1DA1F2;
-  border: 2px solid #1DA1F2;
-  color: #ffffff;
-}
+        .cs li:nth-of-type(odd) {
+            margin-right: auto;
+        }
 
-ul.sns-list li a.tumblr:hover {
-  background: #1DA1F2;
-  border: 2px solid #1DA1F2;
-  color: #ffffff;
-}
+        .cs li:not(:nth-of-type(4n-3)) {
+            margin-left: auto;
+        }
+    }
 
-ul.sns-list li a.lineat:hover {
-  background: #00b900;
-  border: 2px solid #00b900;
-  color: #ffffff;
-}
+    ul.sns-list {
+        display: -webkit-box;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1em auto;
+        -webkit-box-pack: center;
+        justify-content: center;
+        max-width: 600px;
+    }
 
-ul.sns-list li a.youtube:hover {
-  background: #cd201f;
-  border: 2px solid #cd201f;
-  color: #ffffff;
-}
+    ul.sns-list li {
+        margin-bottom: 1em;
+    }
 
-ul.sns-list li a.note:hover {
-  background: #2dcdb5;
-  border: 2px solid #2dcdb5;
-  color: #ffffff;
-}
+    ul.sns-list li a {
+        font-size: 14px;
+        border: 2px solid #65676d;
+        color: #65676d;
+        padding: 5px 8px;
+        border-radius: 20px;
+    }
 
-ul.sns-list li a.amazon:hover {
-  background: #FF9900;
-  border: 2px solid #FF9900;
-  color: #ffffff;
-}
+    ul.sns-list li a:hover {
+        background: #65676d;
+        color: #ffffff;
+    }
 
-ul.sns-list li a.marsh:hover {
-  background: #0f69f5;
-  border: 2px solid #0f69f5;
-  color: #ffffff;
-}
+    ul.sns-list li a.twitter:hover {
+        background: #1DA1F2;
+        border: 2px solid #1DA1F2;
+        color: #ffffff;
+    }
 
-ul.sns-list li a.skeb:hover {
-  background: #8b2323;
-  border: 2px solid #8b2323;
-  color: #ffffff;
-}
+    ul.sns-list li a.tumblr:hover {
+        background: #1DA1F2;
+        border: 2px solid #1DA1F2;
+        color: #ffffff;
+    }
 
-ul.sns-list li a.primecurios:hover {
-  background: #ff7043;
-  border: 2px solid #ff7043;
-  color: #ffffff;
-}
+    ul.sns-list li a.lineat:hover {
+        background: #00b900;
+        border: 2px solid #00b900;
+        color: #ffffff;
+    }
 
-ul.sns-list li a.booth:hover {
-  background: #FC4D50;
-  border: 2px solid #FC4D50;
-  color: #ffffff;
-}
+    ul.sns-list li a.youtube:hover {
+        background: #cd201f;
+        border: 2px solid #cd201f;
+        color: #ffffff;
+    }
 
-ul.sns-list li a.fantia:hover {
-  background: #FF5600;
-  border: 2px solid #FF5600;
-  color: #ffffff;
-}
+    ul.sns-list li a.note:hover {
+        background: #2dcdb5;
+        border: 2px solid #2dcdb5;
+        color: #ffffff;
+    }
 
-ul.sns-list li:not(:last-of-type) {
-  margin-right: 20px;
-}
+    ul.sns-list li a.amazon:hover {
+        background: #FF9900;
+        border: 2px solid #FF9900;
+        color: #ffffff;
+    }
 
-footer .container {
-  margin: 0 auto;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-}
+    ul.sns-list li a.marsh:hover {
+        background: #0f69f5;
+        border: 2px solid #0f69f5;
+        color: #ffffff;
+    }
 
-footer .bottom {
-  margin: 0;
-}
+    ul.sns-list li a.skeb:hover {
+        background: #8b2323;
+        border: 2px solid #8b2323;
+        color: #ffffff;
+    }
 
-footer .bottom a {
-  opacity: 0.7;
-  text-align: right;
-  width: 100%;
-  font-size: 12px;
-  padding: 5px 10px;
-  margin: 0 0 0 auto;
-  display: block;
-}
+    ul.sns-list li a.primecurios:hover {
+        background: #ff7043;
+        border: 2px solid #ff7043;
+        color: #ffffff;
+    }
 
-.sorttbl{
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  display: table;
-}
+    ul.sns-list li a.booth:hover {
+        background: #FC4D50;
+        border: 2px solid #FC4D50;
+        color: #ffffff;
+    }
 
-.sorttbl th {
-    color: #fff!important;
-    background-color: #616161!important;
-}
+    ul.sns-list li a.fantia:hover {
+        background: #FF5600;
+        border: 2px solid #FF5600;
+        color: #ffffff;
+    }
 
-.twitter-tweet{
-  width: 10%
-}
+    ul.sns-list li:not(:last-of-type) {
+        margin-right: 20px;
+    }
 
+    footer .container {
+        margin: 0 auto;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    footer .bottom {
+        margin: 0;
+    }
+
+    footer .bottom a {
+        opacity: 0.7;
+        text-align: right;
+        width: 100%;
+        font-size: 12px;
+        padding: 5px 10px;
+        margin: 0 0 0 auto;
+        display: block;
+    }
+
+    .sorttbl {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        display: table;
+    }
+
+    .sorttbl th {
+        color: #fff !important;
+        background-color: #616161 !important;
+    }
+
+    .twitter-tweet {
+        width: 10%
+    }
 </style>
+
 <body>
-  <main>
-    <div class="container">
+    <main>
+        <div class="container">
 
-          <div class="header">
+            <div class="header">
 
-            <img src="https://drive.google.com/uc?id=1JAgh1crNmSmVhVOdoi5KPkry_Ghv_swv" alt="アイコン" class="icon">
+                <img src="https://drive.google.com/uc?id=1JAgh1crNmSmVhVOdoi5KPkry_Ghv_swv" alt="アイコン" class="icon">
 
-          </div>
+            </div>
 
-          <h1 class="center">マヨにさけ</h1>
-          <p class="update">最終更新　2021.09.16</p>
-          <p class="center">マヨにさけのマヨはマヨネーズですが、マヨネーズが食べられません。<br>
-            自分が活動している場所をまとめておくために作りました。<br>
-            何もかも浅いですお許しください。<br>
-          </p>
+            <h1 class="center">マヨにさけ</h1>
+            <p class="update">最終更新　2021.09.16</p>
+            <p class="center">マヨにさけのマヨはマヨネーズですが、マヨネーズが食べられません。<br>
+                自分が活動している場所をまとめておくために作りました。<br>
+                何もかも浅いですお許しください。<br>
+            </p>
 
             <ul class="sns-list center">
-              <li><a href="https://twitter.com/mayo2sake31" class="twitter" target="_blank">Twitter</a></li>
-              <li><a href="https://smashmate.net/user/68129/" class="marsh" target="_blank">スマメイト</a></li>
-              <li><a href="https://primes.utm.edu/curios/page.php?number_id=17359&submitter=Mayonisake" class="primecurios" target="_blank">Prime Curios!</a></li>
-              <li><a href="https://www.youtube.com/channel/UC9MO2YlYhi8qDD7CV1DWBWQ?app=desktop" class="youtube" target="_blank">Youtube</a></li>
-              <li><a href="https://www.geartics.com/mayo2sake31" class="tumblr" target="_blank">Geartics</a></li>
-              <li><a href="http://xan.xii.jp/profile/492.html" class="skeb" target="_blank">タイピング同盟ぁ～ん</a></li>
-              <li><a href="https://note.com/mayo2sake" class="note" target="_blank">note</a></li>
-              
+                <li><a href="https://twitter.com/mayo2sake31" class="twitter" target="_blank">Twitter</a></li>
+                <li><a href="https://smashmate.net/user/68129/" class="marsh" target="_blank">スマメイト</a></li>
+                <li><a href="https://primes.utm.edu/curios/page.php?number_id=17359&submitter=Mayonisake"
+                        class="primecurios" target="_blank">Prime Curios!</a></li>
+                <li><a href="https://www.youtube.com/channel/UC9MO2YlYhi8qDD7CV1DWBWQ?app=desktop" class="youtube"
+                        target="_blank">Youtube</a></li>
+                <li><a href="https://www.geartics.com/mayo2sake31" class="tumblr" target="_blank">Geartics</a></li>
+                <li><a href="http://xan.xii.jp/profile/492.html" class="skeb" target="_blank">タイピング同盟ぁ～ん</a></li>
+                <li><a href="https://note.com/mayo2sake" class="note" target="_blank">note</a></li>
+
             </ul>
 
-          <section class="two-column">
-            <div class="column">
-              <dl class="memo">
-                <dt>趣味</dt>
-                <dd><strong>Twitter</strong>
-                いろんなツイートしてます。</dd>
-                <dd><strong>スマブラ</strong>
-                基本毎日スマブラしてます。むらびととかロボットとかの弾キャラ使ってます</dd>
-                <dd><strong>タイピング</strong>
-                基本毎日タイピングの練習してます。</dd>
-                <dd><strong>キーボード</strong>
-                REALFORCE PFU Limited Editionを使ってます。自作キーボードは全く作ったことないのでお手柔らかに。</dd>
-                <dd><strong>豆柴の大群</strong>
-                大好き</dd>
-                
-              </dl>
+            <section class="two-column">
+                <div class="column">
+                    <dl class="memo">
+                        <dt>趣味</dt>
+                        <dd><strong>Twitter</strong>
+                            いろんなツイートしてます。</dd>
+                        <dd><strong>スマブラ</strong>
+                            基本毎日スマブラしてます。むらびととかロボットとかの弾キャラ使ってます</dd>
+                        <dd><strong>タイピング</strong>
+                            基本毎日タイピングの練習してます。</dd>
+                        <dd><strong>キーボード</strong>
+                            REALFORCE PFU Limited Editionを使ってます。自作キーボードは全く作ったことないのでお手柔らかに。</dd>
+                        <dd><strong>豆柴の大群</strong>
+                            大好き</dd>
+
+                    </dl>
+                </div>
+                <div class="column">
+                    <h2>各種記録</h2>
+                    <div class="box">
+                        <strong>スマメイト </strong>最高レート1502！！？？？<br><br>
+                        <strong>e-typing </strong>436pt<br><br>
+                        <strong>寿司打 </strong>高級11080円得<br><br>
+                        <strong>タイピング速度測定 </strong>SS+<br><br>
+                        <strong>タイプウェル国語R </strong>XJ<br>
+                    </div>
+                </div>
+
+                <section class="two-column">
+                    <div class="column">
+                        <h2>東海オンエアてつやさんとモンハン！</h2>
+                        <p>カプコン公式チャンネルの配信で、てつやさんと百竜夜行に行きました。<br>
+                            見せ場を奪うようなプレイングをしてしまって申し訳なかったです。<br>
+                            <span
+                                style="color: #dedede; background-color: transparent"><strong>ちなみにマヨにさけのイントネーションは池田ショコラさんが正しいです</strong></span>
+                        </p>
+                    </div>
+                    <div class="column">
+                        <iframe width="373" height="210" src="https://www.youtube.com/embed/6uCaxOZZFMk?start=3929"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="two-column">
+                    <div class="column">
+                        <blockquote class="twitter-tweet">
+                            <p lang="ja" dir="ltr">my new gear…<br>Vortexgearのtab60かわいい <a
+                                    href="https://t.co/whuWLIwVzE">pic.twitter.com/whuWLIwVzE</a></p>&mdash; マヨにさけ𓏗
+                            (@mayo2sake31) <a
+                                href="https://twitter.com/mayo2sake31/status/1391250025632600064?ref_src=twsrc%5Etfw">May
+                                9, 2021</a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                    <div class="column">
+                        <h2>Vortexgear tab60</h2>
+                    </div>
+                </section>
+
+                <section class="two-column">
+                    <div class="column">
+                        <h2>微妙な作問</h2>
+                        <p>\begin{align}
+                            a_1=1\, , \,
+                            a_{n+1}=(n+1)2^n a_n\
+                            (n=1,2,3,\cdots)
+                            \end{align}
+                            によって定められる数列の一般項。<br><br>
+                            両辺を\(log_2\)でとると階差数列があらわれる。<br>
+                            解答↓<br>
+                            \begin{align}
+                            a_n=2^{\cfrac{n(n-1)}{2}}\times n!
+                            \end{align}
+
+                        </p>
+                    </div>
+                    <div class="column">
+                        <blockquote class="twitter-tweet">
+                            <p lang="ja" dir="ltr">a_n+1=(n+1)(2^n)a_n<br>の漸化式の一般項 a_1=1</p>&mdash; マヨにさけ𓏗
+                            (@mayo2sake31) <a
+                                href="https://twitter.com/mayo2sake31/status/1434498211171893250?ref_src=twsrc%5Etfw">September
+                                5, 2021</a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>永遠の疑問</h2>
+                    <p>\begin{align}
+                        f^1(x)=4x(1-x)\, , \,f^2(x)=f^1(f^1(x))
+                        \end{align}
+                    <p>この時、自然数\(n\)に対して、</p>
+                    \begin{align}
+                    \int_{0}^{1}\lim_{n \to \infty}f^n(x) dx=\cfrac{1}{2}
+                    \end{align}
+                    が成り立つのか。<br>
+                    ロジスティック写像における\(a=4\)のイメージです。<br>
+                    どこを調べても見つからないのでわかる人教えてください。<br>
+                    </p>
+                </section>
+                <section>
+                    <h2>
+                        e-typing詳細記録
+                    </h2>
+                    <p>
+                        かなーり重いですがソート機能ついてます。
+                    </p>
+                    <table class="sorttbl" id="myTable" border="1" align="center">
+                        <tr>
+                            <th onclick="w3.sortHTML('#myTable','.item','td:nth-child(1)')" align="center">
+                                <strong>
+                                    開催
+                                </strong><i class="fa fa-sort"></i>
+                            </th>
+                            <th onclick="w3.sortHTML('#myTable','.item','td:nth-child(2)')" align="center">
+                                <strong>
+                                    順位
+                                </strong><i class="fa fa-sort"></i>
+                            </th>
+                            <th onclick="w3.sortHTML('#myTable','.item','td:nth-child(3)')" align="center">
+                                <strong>
+                                    スコア
+                                </strong><i class="fa fa-sort"></i>
+                            </th>
+                            <th onclick="w3.sortHTML('#myTable','.item','td:nth-child(4)')" align="center">
+                                <strong>
+                                    偏差値
+                                </strong><i class="fa fa-sort"></i>
+                            </th>
+                            <th onclick="w3.sortHTML('#myTable','.item','td:nth-child(5)')" align="center">
+                                <strong>
+                                    全国平均
+                                </strong><i class="fa fa-sort"></i>
+                            </th>
+                            <th onclick="w3.sortHTML('#myTable','.item','td:nth-child(6)')" align="center">
+                                <strong>
+                                    お題
+                                </strong><i class="fa fa-sort"></i>
+                            </th>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1015</td>
+                            <td align="center">587</td>
+                            <td align="center">331</td>
+                            <td align="center">61.08</td>
+                            <td align="center">223</td>
+                            <td align="center">魚のことわざ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1016</td>
+                            <td align="center">379</td>
+                            <td align="center">392</td>
+                            <td align="center">65.26</td>
+                            <td align="center">241</td>
+                            <td align="center">学校にあるもの</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1017</td>
+                            <td align="center">534</td>
+                            <td align="center">368</td>
+                            <td align="center">63.23</td>
+                            <td align="center">240</td>
+                            <td align="center">食感ことば</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1018</td>
+                            <td align="center">914</td>
+                            <td align="center">328</td>
+                            <td align="center">59.1</td>
+                            <td align="center">237</td>
+                            <td align="center">擬音・擬態語</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1019</td>
+                            <td align="center">399</td>
+                            <td align="center">351</td>
+                            <td align="center">63.44</td>
+                            <td align="center">220</td>
+                            <td align="center">大好きなおやつ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1020</td>
+                            <td align="center">528</td>
+                            <td align="center">352</td>
+                            <td align="center">62.67</td>
+                            <td align="center">229</td>
+                            <td align="center">秋の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1021</td>
+                            <td align="center">499</td>
+                            <td align="center">350</td>
+                            <td align="center">62.96</td>
+                            <td align="center">232</td>
+                            <td align="center">慣用句</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1022</td>
+                            <td align="center">449</td>
+                            <td align="center">366</td>
+                            <td align="center">63.15</td>
+                            <td align="center">238</td>
+                            <td align="center">ことわざ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1023</td>
+                            <td align="center">312</td>
+                            <td align="center">381</td>
+                            <td align="center">65.21</td>
+                            <td align="center">233</td>
+                            <td align="center">冬の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1024</td>
+                            <td align="center">533</td>
+                            <td align="center">361</td>
+                            <td align="center">61.82</td>
+                            <td align="center">240</td>
+                            <td align="center">エコライフ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1025</td>
+                            <td align="center">376</td>
+                            <td align="center">380</td>
+                            <td align="center">64.56</td>
+                            <td align="center">239</td>
+                            <td align="center">数のある言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1026</td>
+                            <td align="center">335</td>
+                            <td align="center">388</td>
+                            <td align="center">65.02</td>
+                            <td align="center">239</td>
+                            <td align="center">冬の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1027</td>
+                            <td align="center">251</td>
+                            <td align="center">408</td>
+                            <td align="center">66.37</td>
+                            <td align="center">246</td>
+                            <td align="center">大掃除の言葉</td>
+                        </tr>
+
+                        <tr class="item">
+                            <td align="center">1028</td>
+                            <td align="center">360</td>
+                            <td align="center">384</td>
+                            <td align="center">63.67</td>
+                            <td align="center">245</td>
+                            <td align="center">いろはかるた</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1029</td>
+                            <td align="center">509</td>
+                            <td align="center">399</td>
+                            <td align="center">63.56</td>
+                            <td align="center">259</td>
+                            <td align="center">元気が出る言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1030</td>
+                            <td align="center">620</td>
+                            <td align="center">348</td>
+                            <td align="center">62.04</td>
+                            <td align="center">236</td>
+                            <td align="center">慣用句</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1031</td>
+                            <td align="center">291</td>
+                            <td align="center">407</td>
+                            <td align="center">67.26</td>
+                            <td align="center">240</td>
+                            <td align="center">食感ことば</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1032</td>
+                            <td align="center">229</td>
+                            <td align="center">410</td>
+                            <td align="center">68.04</td>
+                            <td align="center">235</td>
+                            <td align="center">冬の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1033</td>
+                            <td align="center">377</td>
+                            <td align="center">390</td>
+                            <td align="center">65.71</td>
+                            <td align="center">238</td>
+                            <td align="center">ことわざ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1034</td>
+                            <td align="center">686</td>
+                            <td align="center">377</td>
+                            <td align="center">62.54</td>
+                            <td align="center">252</td>
+                            <td align="center">バレンタイン</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1035</td>
+                            <td align="center">267</td>
+                            <td align="center">399</td>
+                            <td align="center">67.15</td>
+                            <td align="center">234</td>
+                            <td align="center">数のある言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1036</td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center">思い出の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1037</td>
+                            <td align="center">339</td>
+                            <td align="center">375</td>
+                            <td align="center">65.54</td>
+                            <td align="center">235</td>
+                            <td align="center">慣用句</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1038</td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center">短いことわざ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1039</td>
+                            <td align="center">278</td>
+                            <td align="center">400</td>
+                            <td align="center">66.06</td>
+                            <td align="center">239</td>
+                            <td align="center">おふくろの言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1040</td>
+                            <td align="center">671</td>
+                            <td align="center">359</td>
+                            <td align="center">61.22</td>
+                            <td align="center">246</td>
+                            <td align="center">春の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1041</td>
+                            <td align="center">500</td>
+                            <td align="center">394</td>
+                            <td align="center">63.99</td>
+                            <td align="center">251</td>
+                            <td align="center">元気が出る言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1042</td>
+                            <td align="center">588</td>
+                            <td align="center">359</td>
+                            <td align="center">62.7</td>
+                            <td align="center">230</td>
+                            <td align="center">擬音・擬態語</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1043</td>
+                            <td align="center">371</td>
+                            <td align="center">392</td>
+                            <td align="center">66.56</td>
+                            <td align="center">227</td>
+                            <td align="center">数のある言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1044</td>
+                            <td align="center">357</td>
+                            <td align="center">382</td>
+                            <td align="center">66.13</td>
+                            <td align="center">219</td>
+                            <td align="center">給食のおかず</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1045</td>
+                            <td align="center">501</td>
+                            <td align="center">405</td>
+                            <td align="center">65.29</td>
+                            <td align="center">244</td>
+                            <td align="center">元気が出る言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1046</td>
+                            <td align="center">420</td>
+                            <td align="center">398</td>
+                            <td align="center">65.7</td>
+                            <td align="center">235</td>
+                            <td align="center">顔の慣用句</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1047</td>
+                            <td align="center">275</td>
+                            <td align="center">406</td>
+                            <td align="center">67.79</td>
+                            <td align="center">229</td>
+                            <td align="center">学校にあるもの</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1048</td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center">ことわざ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1049</td>
+                            <td align="center">374</td>
+                            <td align="center">395</td>
+                            <td align="center">66.12</td>
+                            <td align="center">235</td>
+                            <td align="center">食感ことば</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1050</td>
+                            <td align="center">350</td>
+                            <td align="center">423</td>
+                            <td align="center">66.73</td>
+                            <td align="center">248</td>
+                            <td align="center">元気が出る言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1051</td>
+                            <td align="center">340</td>
+                            <td align="center">392</td>
+                            <td align="center">66.22</td>
+                            <td align="center">228</td>
+                            <td align="center">擬音・擬態語</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1052</td>
+                            <td align="center">299</td>
+                            <td align="center">406</td>
+                            <td align="center">67.18</td>
+                            <td align="center">236</td>
+                            <td align="center">梅雨の言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1053</td>
+                            <td align="center">176</td>
+                            <td align="center">412</td>
+                            <td align="center">70.02</td>
+                            <td align="center">216</td>
+                            <td align="center">大好きなおやつ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1054</td>
+                            <td align="center">140</td>
+                            <td align="center">428</td>
+                            <td align="center">71.3</td>
+                            <td align="center">231</td>
+                            <td align="center">慣用句</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1055</td>
+                            <td align="center">281</td>
+                            <td align="center">436</td>
+                            <td align="center">67.86</td>
+                            <td align="center">255</td>
+                            <td align="center">元気が出る言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1056</td>
+                            <td align="center">246</td>
+                            <td align="center">412</td>
+                            <td align="center">67.35</td>
+                            <td align="center">236</td>
+                            <td align="center">エコライフ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1057</td>
+                            <td align="center">290</td>
+                            <td align="center">404</td>
+                            <td align="center">66.18</td>
+                            <td align="center">244</td>
+                            <td align="center">擬音・擬態語</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1058</td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center">数のある言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1059</td>
+                            <td align="center">291</td>
+                            <td align="center">408</td>
+                            <td align="center">66.4</td>
+                            <td align="center">252</td>
+                            <td align="center">食感ことば</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1060</td>
+                            <td align="center">161</td>
+                            <td align="center">415</td>
+                            <td align="center">68.44</td>
+                            <td align="center">236</td>
+                            <td align="center">夏のおやつ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1061</td>
+                            <td align="center">217</td>
+                            <td align="center">415</td>
+                            <td align="center">67.75</td>
+                            <td align="center">248</td>
+                            <td align="center">ことわざ</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1062</td>
+                            <td align="center">269</td>
+                            <td align="center">428</td>
+                            <td align="center">67.07</td>
+                            <td align="center">252</td>
+                            <td align="center">顔の慣用句</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1063</td>
+                            <td align="center">432</td>
+                            <td align="center">408</td>
+                            <td align="center">64.8</td>
+                            <td align="center">256</td>
+                            <td align="center">元気が出る言葉</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1064</td>
+                            <td align="center">228</td>
+                            <td align="center">425</td>
+                            <td align="center">68.25</td>
+                            <td align="center">244</td>
+                            <td align="center">食感ことば</td>
+                        </tr>
+                        <tr class="item">
+                            <td align="center">1065</td>
+                            <td align="center"></td>
+                            <td align="center">426</td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center">擬音・擬態語</td>
+                        </tr>
+
+                    </table>
+                </section>
+                <section>
+                    <h2>投稿動画</h2>
+                    <p class="center">
+                        <iframe width="500" height="312" src="https://www.youtube.com/embed/SXpsrDk7LH8"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>リンク</h2>
+                    <p class="center">マヨにさけ関連のリンク集</p>
+                    <ul class="cs">
+                        <li><a href="https://store.line.me/stickershop/product/16449210">
+                                <img src="https://drive.google.com/uc?id=18gO5IU9XXavd-2b_My7sXrLS2WCEbCqj" alt="キャラシ">
+                                <div class="text">
+                                    <p class="name">LINEスタンプ</p>
+                                    <p>120円で販売しています。</p>
+                                </div>
+                            </a></li>
+                        <li><a href="https://twitter.com/mayo2sake31/status/1245436746654875648">
+                                <img src="https://drive.google.com/uc?id=1J3FURZyubmI5qmCTlRLs2FlA1YT2YAAV" alt="キャラシ">
+                                <div class="text">
+                                    <p class="name">グラフ消したやつ</p>
+                                    <p>もしグラフの縦軸合わせたら</p>
+                                </div>
+                            </a></li>
+                        <li><a href="https://kuizy.net/quiz/160265">
+                                <img src="https://drive.google.com/uc?id=12XeD-WK1rcG13_5gSYUMHhF4qymuq8Ay" alt="キャラシ">
+                                <div class="text">
+                                    <p class="name">マヨにさけクイズ
+                                    </p>
+                                    <p>ねよねよしか勝たンゴ</p>
+                                </div>
+                            </a></li>
+                    </ul>
+
+                </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 center">
+                    <p class="bottom"><a href="https://do.gt-gt.org" target="_blank">template by do.</a></p>
+                </div>
             </div>
-            <div class="column">
-              <h2>各種記録</h2>
-              <div class="box">
-              <strong>スマメイト </strong>最高レート1502！！？？？<br><br>
-              <strong>e-typing </strong>436pt<br><br>
-              <strong>寿司打 </strong>高級11080円得<br><br>
-              <strong>タイピング速度測定 </strong>SS+<br><br>
-              <strong>タイプウェル国語R </strong>XJ<br>
-              </div>
-            </div>
-
-    <section class="two-column">
-        <div class="column">
-          <h2>東海オンエアてつやさんとモンハン！</h2>
-          <p>カプコン公式チャンネルの配信で、てつやさんと百竜夜行に行きました。<br>
-          見せ場を奪うようなプレイングをしてしまって申し訳なかったです。<br>
-          <span style="color: #dedede; background-color: transparent"><strong>ちなみにマヨにさけのイントネーションは池田ショコラさんが正しいです</strong></span>
-          </p>
         </div>
-        <div class="column">
-          <iframe width="373" height="210" src="https://www.youtube.com/embed/6uCaxOZZFMk?start=3929" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-    
-    <section class="two-column">
-      <div class="column">
-        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">my new gear…<br>Vortexgearのtab60かわいい <a href="https://t.co/whuWLIwVzE">pic.twitter.com/whuWLIwVzE</a></p>&mdash; マヨにさけ𓏗 (@mayo2sake31) <a href="https://twitter.com/mayo2sake31/status/1391250025632600064?ref_src=twsrc%5Etfw">May 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
-      <div class="column">
-        <h2>Vortexgear tab60</h2>
-      </div>
-    </section>
-
-    <section class="two-column">
-      <div class="column">
-        <h2>微妙な作問</h2>
-        <p>\begin{align}
-          a_1=1\, , \,
-          a_{n+1}=(n+1)2^n a_n\ 
-          (n=1,2,3,\cdots)
-          \end{align}
-          によって定められる数列の一般項。<br><br>
-          両辺を\(log_2\)でとると階差数列があらわれる。<br>
-          解答↓<br>
-          \begin{align}
-          a_n=2^{\cfrac{n(n-1)}{2}}\times n!
-          \end{align}
-
-        </p>
-      </div>
-      <div class="column">
-        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">a_n+1=(n+1)(2^n)a_n<br>の漸化式の一般項 a_1=1</p>&mdash; マヨにさけ𓏗 (@mayo2sake31) <a href="https://twitter.com/mayo2sake31/status/1434498211171893250?ref_src=twsrc%5Etfw">September 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
-    </section>
-
-    <section>
-      <h2>永遠の疑問</h2>
-      <p>\begin{align}
-        f^1(x)=4x(1-x)\, , \,f^2(x)=f^1(f^1(x))
-        \end{align}
-        <p>この時、自然数\(n\)に対して、</p>
-        \begin{align}
-        \int_{0}^{1}\lim_{n \to \infty}f^n(x) dx=\cfrac{1}{2}
-        \end{align}
-        が成り立つのか。<br>
-        ロジスティック写像における\(a=4\)のイメージです。<br>
-        どこを調べても見つからないのでわかる人教えてください。<br>
-      </p>
-    </section>
-
-    <section>
-      <h2>投稿動画</h2>
-      <p class="center">
-      <iframe width="500" height="312" src="https://www.youtube.com/embed/SXpsrDk7LH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </p>
-    </section>
-
-    <section>
-      <h2>リンク</h2>
-      <p class="center">マヨにさけ関連のリンク集</p>      
-      <ul class="cs">
-        <li><a href="https://store.line.me/stickershop/product/16449210">
-          <img src="https://drive.google.com/uc?id=18gO5IU9XXavd-2b_My7sXrLS2WCEbCqj" alt="キャラシ">
-          <div class="text">
-            <p class="name">LINEスタンプ</p>
-            <p>120円で販売しています。</p>
-          </div>
-        </a></li>
-        <li><a href="https://twitter.com/mayo2sake31/status/1245436746654875648">
-          <img src="https://drive.google.com/uc?id=1J3FURZyubmI5qmCTlRLs2FlA1YT2YAAV" alt="キャラシ">
-          <div class="text">
-            <p class="name">グラフ消したやつ</p>
-            <p>もしグラフの縦軸合わせたら</p>
-          </div>
-        </a></li>
-        <li><a href="https://kuizy.net/quiz/160265">
-          <img src="https://drive.google.com/uc?id=12XeD-WK1rcG13_5gSYUMHhF4qymuq8Ay" alt="キャラシ">
-          <div class="text">
-            <p class="name">マヨにさけクイズ
-            </p>
-            <p>ねよねよしか勝たンゴ</p>
-          </div>
-        </a></li>
-      </ul>
-
-    </section>
-  </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 center">
-          <p class="bottom"><a href="https://do.gt-gt.org" target="_blank">template by do.</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 </body>
+
 </html>
