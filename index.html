@@ -8,42 +8,8 @@
   <script type="text/javascript" async 
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
-  <script>
-    function loadingProcess(){
-        //サーバーからスプレッドシートのデータを取得する
-        google.script.run.withSuccessHandler(dispSpreadsheet).GetSpreadsheet();
-      }
-      window.addEventListener('load', loadingProcess);
-
-    function dispSpreadsheet(spreadsheet_data){
-        var htmlTable = '<table class="sorttbl" id="myTable" border="1" align="center">';
-        var ww = "w3.sortHTML('#myTable','.item', 'td:nth-child("
-        //2次元配列を取得しているので、
-        for(var row = 0; row < spreadsheet_data.length; row++){
-          if(row==0){
-            htmlTable +='<tr>';
-          }else{
-            htmlTable +='<tr class="item">';
-          }
-          for(var col = 0; col < spreadsheet_data[row].length; col++){
-            var col2=String(col+1)+")')\"";
-            if(row==0){
-              htmlTable+='<th onclick="' + ww +col2+ ' align="center"><strong>'+spreadsheet_data[row][col]+'</strong><i class="fa fa-sort"></i></th>';
-            }else{
-              htmlTable += '<td align="center">' + spreadsheet_data[row][col] + '</td>';
-            }
-          }
-          htmlTable += '</tr>';
-        }
-        
-        htmlTable += '</table>';
-        
-        document.getElementById("dispArea").innerHTML = htmlTable;
-        
-      }
-  </script>
   
-  <title>matome</title>
+  <title>mayo2sake</title>
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -667,12 +633,6 @@ footer .bottom a {
     </section>
 
     <section>
-      <h2>e-typing詳細記録</h2>
-      <p class="center">かなーり重いですがソート機能ついてます。</p>
-      <div id='dispArea'></div>
-    </section>
-
-    <section>
       <h2>投稿動画</h2>
       <p class="center">
       <iframe width="500" height="312" src="https://www.youtube.com/embed/SXpsrDk7LH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -683,14 +643,14 @@ footer .bottom a {
       <h2>リンク</h2>
       <p class="center">マヨにさけ関連のリンク集</p>      
       <ul class="cs">
-        <li><a href="#">
+        <li><a href="https://store.line.me/stickershop/product/16449210">
           <img src="https://drive.google.com/uc?id=18gO5IU9XXavd-2b_My7sXrLS2WCEbCqj" alt="キャラシ">
           <div class="text">
             <p class="name">LINEスタンプ</p>
             <p>120円で販売しています。</p>
           </div>
         </a></li>
-        <li><a href="https://t.co/8VuBCi5fMd">
+        <li><a href="https://twitter.com/mayo2sake31/status/1245436746654875648">
           <img src="https://drive.google.com/uc?id=1J3FURZyubmI5qmCTlRLs2FlA1YT2YAAV" alt="キャラシ">
           <div class="text">
             <p class="name">グラフ消したやつ</p>
@@ -704,21 +664,7 @@ footer .bottom a {
             </p>
             <p>ねよねよしか勝たンゴ</p>
           </div>
-        </a></li><!--
-        <li><a href="#">
-          <img src="img/01.jpg" alt="キャラシ">
-          <div class="text">
-            <p class="name">おなまえ</p>
-            <p>〇〇企画 / ××所属</p>
-          </div>
         </a></li>
-        <li><a href="#">
-          <img src="img/02.jpg" alt="キャラシ">
-          <div class="text">
-            <p class="name">おなまえ</p>
-            <p>〇〇企画 / ××所属</p>
-          </div>
-        </a></li>-->
       </ul>
 
     </section>
