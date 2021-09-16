@@ -1,0 +1,738 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script type="text/javascript" async 
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script>
+    function loadingProcess(){
+        //サーバーからスプレッドシートのデータを取得する
+        google.script.run.withSuccessHandler(dispSpreadsheet).GetSpreadsheet();
+      }
+      window.addEventListener('load', loadingProcess);
+
+    function dispSpreadsheet(spreadsheet_data){
+        var htmlTable = '<table class="sorttbl" id="myTable" border="1" align="center">';
+        var ww = "w3.sortHTML('#myTable','.item', 'td:nth-child("
+        //2次元配列を取得しているので、
+        for(var row = 0; row < spreadsheet_data.length; row++){
+          if(row==0){
+            htmlTable +='<tr>';
+          }else{
+            htmlTable +='<tr class="item">';
+          }
+          for(var col = 0; col < spreadsheet_data[row].length; col++){
+            var col2=String(col+1)+")')\"";
+            if(row==0){
+              htmlTable+='<th onclick="' + ww +col2+ ' align="center"><strong>'+spreadsheet_data[row][col]+'</strong><i class="fa fa-sort"></i></th>';
+            }else{
+              htmlTable += '<td align="center">' + spreadsheet_data[row][col] + '</td>';
+            }
+          }
+          htmlTable += '</tr>';
+        }
+        
+        htmlTable += '</table>';
+        
+        document.getElementById("dispArea").innerHTML = htmlTable;
+        
+      }
+  </script>
+  
+  <title>matome</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+  
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 96%;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #fff;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 560px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 740px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@charset "UTF-8";
+/* ==========================================
+   Template: matome（https://do.gt-gt.org/）
+   Copyright: 2020 do.
+   利用規約を遵守の上お使いください。二次配布・販売を禁じます。
+   ========================================== */
+/* ==========================================
+  リセットCSS
+  基本的には触らないでください
+  ========================================== */
+@import url("https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap");
+input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+img,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  line-height: 1.6em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: bold;
+}
+
+/* ==========================================
+  以下、デザインを決める記述です。
+  ※印で検索することで設定箇所へジャンプします。
+   ========================================== */
+body {
+  background-size: auto auto;
+  background-color: #f8f8f8;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(255, 255, 255, 0.5) 14px, rgba(255, 255, 255, 0.5) 27px);
+  /* ↑上記3行が背景のストライプの記述です。
+      お好みの色などに変更してください。※ */
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: #da2b5c;
+  /* ↑リンクの色　一括置換すると見出し色も一緒に変わります ※ */
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+a img {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: lightpink;
+  /* ↑リンクをホバーしたときの色 ※ */
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+a:hover img {
+  opacity: 0.7;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+dl,
+ol,
+p,
+ul {
+  margin: 10px auto 20px;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  dl,
+  ol,
+  p,
+  ul {
+    margin: 15px auto;
+  }
+}
+
+h1 {
+  color: #da2b5c;
+  /* ↑見出し色　リンク色と同じになります ※ */
+  font-family: "Kosugi Maru", sans-serif;
+}
+
+h4 {
+  padding-left: 10px;
+  margin: 20px 0 10px;
+  font-size: 120%;
+}
+
+.center {
+  text-align: center;
+}
+
+.header {
+  background-color: #db85b6;
+  background-image: url(https://drive.google.com/uc?id=1MX_vuAs8bmZB3_rlDsWqaRElFLaL41o1);
+  /* ↑ヘッダー画像 ※ */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+  position: relative;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.header img.icon {
+  display: block;
+  margin: auto;
+  height: 150px;
+  width: 150px;
+  background: #fff;
+  border-radius: 50%;
+  border: solid 6px #ffffff;
+  position: absolute;
+  bottom: -75px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    height: 200px;
+  }
+  .header img.icon {
+    height: 100px;
+    width: 100px;
+    border: solid 4px #ffffff;
+    bottom: -50px;
+  }
+}
+
+dl.memo dt {
+  width: 100%;
+  font-weight: bold;
+  color: #da2b5c;
+  padding: 0.5em 0;
+}
+
+dl.memo dd {
+  border-left: 1px dotted #d0d0d0;
+  margin: 0 0 0 1em;
+  padding: 0 0 1em 1em;
+}
+
+section {
+  width: 95%;
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.two-column {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.two-column .column {
+  width: 48%;
+}
+
+@media screen and (max-width: 767px) {
+  .two-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+  }
+  .two-column .column {
+    width: 100%;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  margin: 1em auto;
+  color: #da2b5c;
+  width: 100%;
+}
+
+section > h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+h3 {
+  margin: 1em auto;
+}
+
+.update {
+  font-size: 80%;
+  color: #bcbcbc;
+  text-align: center;
+}
+
+.box {
+  background: #ffe8eb;
+  /* ↑色付きボックスの背景色 ※ */
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.cs {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+}
+
+.cs li {
+  width: 24%;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.cs li:not(:nth-of-type(4n-3)) {
+  margin-left: calc(4% / 3);
+}
+
+.cs li a {
+  width: 100%;
+  background: #e6e6e6;
+  display: block;
+}
+
+.cs li a:hover {
+  background: #ffffff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.cs li a img {
+  width: 100%;
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cs li a .text {
+  padding: 5px;
+}
+
+.cs li a .text p {
+  font-size: 80%;
+  color: #333333;
+  text-align: center;
+}
+
+.cs li a .text p.name {
+  font-size: 100%;
+  color: #da2b5c;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 auto 0.5em;
+}
+
+@media screen and (max-width: 767px) {
+  .cs li {
+    width: 49%;
+  }
+  .cs li li a img {
+    height: 240px;
+  }
+  .cs li:not(:nth-of-type(4n-3)) {
+    margin-left: 0;
+  }
+  .cs li:nth-of-type(odd) {
+    margin-right: 2%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .cs li {
+    width: 90%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 260px;
+  }
+  .cs li:nth-of-type(odd) {
+    margin-right: auto;
+  }
+  .cs li:not(:nth-of-type(4n-3)) {
+    margin-left: auto;
+  }
+}
+
+ul.sns-list {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em auto;
+  -webkit-box-pack: center;
+          justify-content: center;
+  max-width: 600px;
+}
+
+ul.sns-list li {
+  margin-bottom: 1em;
+}
+
+ul.sns-list li a {
+  font-size: 14px;
+  border: 2px solid #65676d;
+  color: #65676d;
+  padding: 5px 8px;
+  border-radius: 20px;
+}
+
+ul.sns-list li a:hover {
+  background: #65676d;
+  color: #ffffff;
+}
+
+ul.sns-list li a.twitter:hover {
+  background: #1DA1F2;
+  border: 2px solid #1DA1F2;
+  color: #ffffff;
+}
+
+ul.sns-list li a.tumblr:hover {
+  background: #1DA1F2;
+  border: 2px solid #1DA1F2;
+  color: #ffffff;
+}
+
+ul.sns-list li a.lineat:hover {
+  background: #00b900;
+  border: 2px solid #00b900;
+  color: #ffffff;
+}
+
+ul.sns-list li a.youtube:hover {
+  background: #cd201f;
+  border: 2px solid #cd201f;
+  color: #ffffff;
+}
+
+ul.sns-list li a.note:hover {
+  background: #2dcdb5;
+  border: 2px solid #2dcdb5;
+  color: #ffffff;
+}
+
+ul.sns-list li a.amazon:hover {
+  background: #FF9900;
+  border: 2px solid #FF9900;
+  color: #ffffff;
+}
+
+ul.sns-list li a.marsh:hover {
+  background: #0f69f5;
+  border: 2px solid #0f69f5;
+  color: #ffffff;
+}
+
+ul.sns-list li a.skeb:hover {
+  background: #8b2323;
+  border: 2px solid #8b2323;
+  color: #ffffff;
+}
+
+ul.sns-list li a.primecurios:hover {
+  background: #ff7043;
+  border: 2px solid #ff7043;
+  color: #ffffff;
+}
+
+ul.sns-list li a.booth:hover {
+  background: #FC4D50;
+  border: 2px solid #FC4D50;
+  color: #ffffff;
+}
+
+ul.sns-list li a.fantia:hover {
+  background: #FF5600;
+  border: 2px solid #FF5600;
+  color: #ffffff;
+}
+
+ul.sns-list li:not(:last-of-type) {
+  margin-right: 20px;
+}
+
+footer .container {
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+footer .bottom {
+  margin: 0;
+}
+
+footer .bottom a {
+  opacity: 0.7;
+  text-align: right;
+  width: 100%;
+  font-size: 12px;
+  padding: 5px 10px;
+  margin: 0 0 0 auto;
+  display: block;
+}
+
+.sorttbl{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
+}
+
+.sorttbl th {
+    color: #fff!important;
+    background-color: #616161!important;
+}
+
+.twitter-tweet{
+  width: 10%
+}
+
+</style>
+<body>
+  <main>
+    <div class="container">
+
+          <div class="header">
+
+            <img src="https://drive.google.com/uc?id=1JAgh1crNmSmVhVOdoi5KPkry_Ghv_swv" alt="アイコン" class="icon">
+
+          </div>
+
+          <h1 class="center">マヨにさけ</h1>
+          <p class="update">最終更新　2021.09.16</p>
+          <p class="center">マヨにさけのマヨはマヨネーズですが、マヨネーズが食べられません。<br>
+            自分が活動している場所をまとめておくために作りました。<br>
+            何もかも浅いですお許しください。<br>
+          </p>
+
+            <ul class="sns-list center">
+              <li><a href="https://twitter.com/mayo2sake31" class="twitter" target="_blank">Twitter</a></li>
+              <li><a href="https://smashmate.net/user/68129/" class="marsh" target="_blank">スマメイト</a></li>
+              <li><a href="https://primes.utm.edu/curios/page.php?number_id=17359&submitter=Mayonisake" class="primecurios" target="_blank">Prime Curios!</a></li>
+              <li><a href="https://www.youtube.com/channel/UC9MO2YlYhi8qDD7CV1DWBWQ?app=desktop" class="youtube" target="_blank">Youtube</a></li>
+              <li><a href="https://www.geartics.com/mayo2sake31" class="tumblr" target="_blank">Geartics</a></li>
+              <li><a href="http://xan.xii.jp/profile/492.html" class="skeb" target="_blank">タイピング同盟ぁ～ん</a></li>
+              <li><a href="https://note.com/mayo2sake" class="note" target="_blank">note</a></li>
+              
+            </ul>
+
+          <section class="two-column">
+            <div class="column">
+              <dl class="memo">
+                <dt>趣味</dt>
+                <dd><strong>Twitter</strong>
+                いろんなツイートしてます。</dd>
+                <dd><strong>スマブラ</strong>
+                基本毎日スマブラしてます。むらびととかロボットとかの弾キャラ使ってます</dd>
+                <dd><strong>タイピング</strong>
+                基本毎日タイピングの練習してます。</dd>
+                <dd><strong>キーボード</strong>
+                REALFORCE PFU Limited Editionを使ってます。自作キーボードは全く作ったことないのでお手柔らかに。</dd>
+                <dd><strong>豆柴の大群</strong>
+                大好き</dd>
+                
+              </dl>
+            </div>
+            <div class="column">
+              <h2>各種記録</h2>
+              <div class="box">
+              <strong>スマメイト </strong>最高レート1502！！？？？<br><br>
+              <strong>e-typing </strong>436pt<br><br>
+              <strong>寿司打 </strong>高級11080円得<br><br>
+              <strong>タイピング速度測定 </strong>SS+<br><br>
+              <strong>タイプウェル国語R </strong>XJ<br>
+              </div>
+            </div>
+
+    <section class="two-column">
+        <div class="column">
+          <h2>東海オンエアてつやさんとモンハン！</h2>
+          <p>カプコン公式チャンネルの配信で、てつやさんと百竜夜行に行きました。<br>
+          見せ場を奪うようなプレイングをしてしまって申し訳なかったです。<br>
+          <span style="color: #dedede; background-color: transparent"><strong>ちなみにマヨにさけのイントネーションは池田ショコラさんが正しいです</strong></span>
+          </p>
+        </div>
+        <div class="column">
+          <iframe width="373" height="210" src="https://www.youtube.com/embed/6uCaxOZZFMk?start=3929" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <section class="two-column">
+      <div class="column">
+        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">my new gear…<br>Vortexgearのtab60かわいい <a href="https://t.co/whuWLIwVzE">pic.twitter.com/whuWLIwVzE</a></p>&mdash; マヨにさけ𓏗 (@mayo2sake31) <a href="https://twitter.com/mayo2sake31/status/1391250025632600064?ref_src=twsrc%5Etfw">May 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+      <div class="column">
+        <h2>Vortexgear tab60</h2>
+      </div>
+    </section>
+
+    <section class="two-column">
+      <div class="column">
+        <h2>微妙な作問</h2>
+        <p>\begin{align}
+          a_1=1\, , \,
+          a_{n+1}=(n+1)2^n a_n\ 
+          (n=1,2,3,\cdots)
+          \end{align}
+          によって定められる数列の一般項。<br><br>
+          両辺を\(log_2\)でとると階差数列があらわれる。<br>
+          解答↓<br>
+          \begin{align}
+          a_n=2^{\cfrac{n(n-1)}{2}}\times n!
+          \end{align}
+
+        </p>
+      </div>
+      <div class="column">
+        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">a_n+1=(n+1)(2^n)a_n<br>の漸化式の一般項 a_1=1</p>&mdash; マヨにさけ𓏗 (@mayo2sake31) <a href="https://twitter.com/mayo2sake31/status/1434498211171893250?ref_src=twsrc%5Etfw">September 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </section>
+
+    <section>
+      <h2>永遠の疑問</h2>
+      <p>\begin{align}
+        f^1(x)=4x(1-x)\, , \,f^2(x)=f^1(f^1(x))
+        \end{align}
+        <p>この時、自然数\(n\)に対して、</p>
+        \begin{align}
+        \int_{0}^{1}\lim_{n \to \infty}f^n(x) dx=\cfrac{1}{2}
+        \end{align}
+        が成り立つのか。<br>
+        ロジスティック写像における\(a=4\)のイメージです。<br>
+        どこを調べても見つからないのでわかる人教えてください。<br>
+      </p>
+    </section>
+
+    <section>
+      <h2>e-typing詳細記録</h2>
+      <p class="center">かなーり重いですがソート機能ついてます。</p>
+      <div id='dispArea'></div>
+    </section>
+
+    <section>
+      <h2>投稿動画</h2>
+      <p class="center">
+      <iframe width="500" height="312" src="https://www.youtube.com/embed/SXpsrDk7LH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </p>
+    </section>
+
+    <section>
+      <h2>リンク</h2>
+      <p class="center">マヨにさけ関連のリンク集</p>      
+      <ul class="cs">
+        <li><a href="#">
+          <img src="https://drive.google.com/uc?id=18gO5IU9XXavd-2b_My7sXrLS2WCEbCqj" alt="キャラシ">
+          <div class="text">
+            <p class="name">LINEスタンプ</p>
+            <p>120円で販売しています。</p>
+          </div>
+        </a></li>
+        <li><a href="https://t.co/8VuBCi5fMd">
+          <img src="https://drive.google.com/uc?id=1J3FURZyubmI5qmCTlRLs2FlA1YT2YAAV" alt="キャラシ">
+          <div class="text">
+            <p class="name">グラフ消したやつ</p>
+            <p>もしグラフの縦軸合わせたら</p>
+          </div>
+        </a></li>
+        <li><a href="https://kuizy.net/quiz/160265">
+          <img src="https://drive.google.com/uc?id=12XeD-WK1rcG13_5gSYUMHhF4qymuq8Ay" alt="キャラシ">
+          <div class="text">
+            <p class="name">マヨにさけクイズ
+            </p>
+            <p>ねよねよしか勝たンゴ</p>
+          </div>
+        </a></li><!--
+        <li><a href="#">
+          <img src="img/01.jpg" alt="キャラシ">
+          <div class="text">
+            <p class="name">おなまえ</p>
+            <p>〇〇企画 / ××所属</p>
+          </div>
+        </a></li>
+        <li><a href="#">
+          <img src="img/02.jpg" alt="キャラシ">
+          <div class="text">
+            <p class="name">おなまえ</p>
+            <p>〇〇企画 / ××所属</p>
+          </div>
+        </a></li>-->
+      </ul>
+
+    </section>
+  </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 center">
+          <p class="bottom"><a href="https://do.gt-gt.org" target="_blank">template by do.</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
